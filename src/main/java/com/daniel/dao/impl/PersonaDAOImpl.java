@@ -1,17 +1,37 @@
 package com.daniel.dao.impl;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.Stateless;
+import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import com.daniel.dao.IPersonaDAO;
 import com.daniel.model.Persona;
+//Aqui estamos reservando una instancia en memoria de esta 
+//@Named
+//Dispoisición para transacciones
+@Stateless
+public class PersonaDAOImpl  implements IPersonaDAO, Serializable{
+    //Maneja las entidades
+    @PersistenceContext(unitName="blog-persitence-unit")
+    private EntityManager entityManager;
 
-public class PersonaDAOImpl  implements IPersonaDAO{
 
     @Override
     public Integer registrar(Persona persona) throws Exception {
-        System.out.println(persona.getNombres());
-        return 1;
+        try {
+            //Con esto hemos realizado la inserción
+            //entityManager.getTransaction().begin();
+            entityManager.persist(persona);
+            //entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            //entityManager.getTransaction().rollback();
+        }
+        return persona.getIdPersona();
     }
 
     @Override

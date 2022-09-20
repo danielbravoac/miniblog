@@ -1,0 +1,12 @@
+Inyección de dependencias:
+- Es la comunicación de diferentes capas a través de una interfaz para implementar sus métodos
+-Ejemplos:
+ Tenemos una interfaz de la cual se hizo una implementación, y nosotros queremos que una clase consuma a esta implementación
+ es aqui donde entran las inyecciones de dependencias, por ejemplo, en el proyecto se indica que se debe hacer un CRUD en la capa DAO, este se realiza
+ pero la forma correcta de acceder es a través de su interfaz, esto con el fin de no generar tantas instancias de la implementación (Seguir el patrón Singleton)
+ , entonces primero llamamos a la interfaz y luego anotamos la implementación con @Named para mandarlo a memoria de JAVA EE y la llamada que hicimos  de la interfaz
+ la ponemos con @Inject que significa que está llamando a su implementación, luego si queremos inicializar métodos con el constructor debemos ponerlo con la anotación
+ @PostConstruct, esto porque toda Inyección de dependencias, inicia después del constructor de la clase en la que queremos usar nuestra implementación
+
+- Existen 3 formas de hacer inyección de dependencias, con:
+- set, constructor, interfaces

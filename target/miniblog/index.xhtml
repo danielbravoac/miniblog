@@ -13,6 +13,7 @@ xmlns:p="http://primefaces.org/ui"
         <p:inputText value="#{personaBean.persona.nombres}"/>
         <p:commandButton actionListener="#{personaBean.registrar()}" value="Registrar"/>  
         
+        <!-- Value nos hace ingresar a los valores de la lista pero var nos hace iterar en cada uno de los valores que se encuentran en la lista -->
         <p:dataTable value="#{personaBean.personaList}" var="elemento">
             <p:column headerText="ID">
                 <p:outputLabel value="#{elemento.idPersona}"/>

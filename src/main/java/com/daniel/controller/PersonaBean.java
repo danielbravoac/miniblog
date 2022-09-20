@@ -3,7 +3,9 @@ package com.daniel.controller;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.daniel.model.Persona;
@@ -14,6 +16,7 @@ import com.daniel.service.impl.PersonaServiceImpl;
 @RequestScoped
 public class PersonaBean implements Serializable {
     //Llamando al servicio
+    @Inject
     private IPersonaService personaService;
     //Llamando a la entidad
     private Persona persona;
@@ -29,10 +32,17 @@ public class PersonaBean implements Serializable {
         this.personaList = personaList;
     }
 
-    public PersonaBean(){
+    /* public PersonaBean(){
         this.persona = new Persona();
-        this.personaService = new PersonaServiceImpl();
+        //this.personaService = new PersonaServiceImpl();
+        //this.listar();
+    } */
+
+    //La inyección de dependencias seimpre se hacen después del constructor
+    @PostConstruct
+    public void init() throws Exception {
         this.listar();
+        this.persona = new Persona();
     }
 
     public void registrar(){
