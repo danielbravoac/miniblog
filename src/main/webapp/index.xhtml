@@ -6,22 +6,28 @@ xmlns:h="http://java.sun.com/jsf/html"
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:p="http://primefaces.org/ui"
 >
-<h:head></h:head>
+<h:head>
+    <link href="./resources/css/index.css" rel="stylesheet" type="text/css"/>
+</h:head>
 <body>
     <h:form>
-        <p:outputLabel value="Nombres"/>
-        <p:inputText value="#{personaBean.persona.nombres}"/>
-        <p:commandButton actionListener="#{personaBean.registrar()}" value="Registrar"/>  
-        
-        <!-- Value nos hace ingresar a los valores de la lista pero var nos hace iterar en cada uno de los valores que se encuentran en la lista -->
-        <p:dataTable value="#{personaBean.personaList}" var="elemento">
-            <p:column headerText="ID">
-                <p:outputLabel value="#{elemento.idPersona}"/>
-            </p:column>
-            <p:column headerText="Nombre">
-                <p:outputLabel value="#{elemento.nombres}"/>
-            </p:column>
-        </p:dataTable>
+        <div class="centerDiv" style="width: 400px">
+            <p:panel>
+                <f:facet name="header">Login</f:facet>
+                <h:panelGrid columns="2">
+                    <p:outputLabel for="txtLogin" value="Usuario:"/> 
+                    <h:inputText id="txtLogin" required="true" />
+                    
+                    <p:outputLabel for="txtContrasena" value="Contraseña:"/>
+                    <h:inputSecret id="txtContrasena" required="true"  />
+                </h:panelGrid>
+                
+                <p:commandButton value="Login" />
+                <!-- inmediate es la validacion de hacer la indexación sin necesidad de seguir a los required anteriores  -->
+                <!-- Es mejor hacer una redireccion implicita (?faces-redirect=true) para poder evitar hacer el reenvio de peticiones -->
+                <p:commandButton value="Crear Usuario" action="registrar?faces-redirect=true" immediate="true"/>
+            </p:panel>
+    </div>
     </h:form>
 </body>
 </html>
