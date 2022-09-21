@@ -4,7 +4,12 @@
     <jta-data-source>java:/ejemploDS</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
+        <!-- drop-and-create es para reconstruir las tablas cada vez que iniciemos -->
+        <!-- create es solo para generar nuevamente el esquema e insertar -->
         <property name="javax.persistence.schema-generation.database.action" value="drop-and-create" />
+        <!-- Insertamos un archivo para que pueda insertar registros al iniciar la aplicación -->
+        <property name="javax.persistence.sql-load-script-source"
+        value="META-INF/data.sql"/>
     </properties>
 </persistence-unit>
 </persistence>

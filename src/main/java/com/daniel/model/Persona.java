@@ -23,6 +23,14 @@ public class Persona implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "persona")
     private Usuario usuario;
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     @Column(name = "nombres", nullable = false, length = 50)
     private String nombres;
 

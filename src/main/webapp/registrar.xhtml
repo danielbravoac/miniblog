@@ -73,6 +73,7 @@ xmlns:p="http://primefaces.org/ui"
 				</h:panelGrid>
 
 				<p:commandButton value="Inicio" action="index?faces-redirect=true" immediate="true"/>
+				<!-- El método que retorna el action sirve como regla de navegacion -->
 				<p:commandButton value="Registrar" action="#{registroBean.registrar()}" />
 			</p:panel>
 		</h:form>

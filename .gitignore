@@ -1,3 +1,4 @@
 #ignorando .idea
 .idea
 *.txt
+target

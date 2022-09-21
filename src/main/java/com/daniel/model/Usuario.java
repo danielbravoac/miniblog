@@ -32,7 +32,7 @@ public class Usuario implements Serializable {
     private String contrasena;
 
     @Column(name = "estado", nullable = false, length = 1)
-    private String estado;
+    private String estado="A";
 
     public Integer getId() {
         return id;
