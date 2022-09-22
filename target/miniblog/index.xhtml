@@ -11,18 +11,20 @@ xmlns:p="http://primefaces.org/ui"
 </h:head>
 <body>
     <h:form>
+        <!-- Estará atento a cualquier petición AJAX -->
+        <p:growl autoUpdate="true" showDetail="true" showSummary="true"/>
         <div class="centerDiv" style="width: 400px">
             <p:panel>
                 <f:facet name="header">Login</f:facet>
                 <h:panelGrid columns="2">
                     <p:outputLabel for="txtLogin" value="Usuario:"/> 
-                    <h:inputText id="txtLogin" required="true" />
+                    <h:inputText id="txtLogin" required="true" value="#{indexBean.usuario.usuario}"/>
                     
                     <p:outputLabel for="txtContrasena" value="Contraseña:"/>
-                    <h:inputSecret id="txtContrasena" required="true"  />
+                    <h:inputSecret id="txtContrasena" required="true"  value="#{indexBean.usuario.contrasena}"/>
                 </h:panelGrid>
                 
-                <p:commandButton value="Login" />
+                <p:commandButton value="Login" action="#{indexBean.login()}"/>
                 <!-- inmediate es la validacion de hacer la indexación sin necesidad de seguir a los required anteriores  -->
                 <!-- Es mejor hacer una redireccion implicita (?faces-redirect=true) para poder evitar hacer el reenvio de peticiones -->
                 <p:commandButton value="Crear Usuario" action="registrar?faces-redirect=true" immediate="true"/>

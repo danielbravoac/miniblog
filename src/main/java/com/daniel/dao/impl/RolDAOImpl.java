@@ -51,7 +51,7 @@ public class RolDAOImpl implements IRolDAO, Serializable {
         // JPQL= QueryLanguage
         Query q = entityManager.createQuery("FROM Rol r WHERE r.id = ?1");
         q.setParameter(1, t.getId());
-
+    
         List<Rol> lista = (List<Rol>) q.getResultList();
         return lista != null && !lista.isEmpty() ? lista.get(0) : new Rol();
     }
